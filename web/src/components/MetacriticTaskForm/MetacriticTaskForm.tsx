@@ -1,63 +1,58 @@
-import { Form, Label, RadioField, TextField } from '@redwoodjs/forms'
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  FormHelperText,
+  HStack,
+  Radio,
+  RadioGroup,
+  Button,
+} from '@chakra-ui/react'
+import { useForm } from '@redwoodjs/forms'
+
+enum TaskMedia {
+  MOVIE = 'movie',
+  TV_SHOW = 'tv_show',
+  GAME = 'game',
+}
+interface FormInput {
+  taskName: string
+  taskMedia: TaskMedia
+}
 
 const MetacriticTaskForm = () => {
+  const { register, handleSubmit } = useForm<FormInput>()
+  const onSubmit = (data) => {
+    console.log(data)
+  }
   return (
-    <Form>
-      <div>
-        <label className="text-sm text-gray-600 false" htmlFor="email">
-          Task Name
-        </label>
-        <div>
-          <TextField
-            name="task_name"
-            className="w-full border border-gray-300 rounded-sm px-4 py-3 outline-none transition-colors duration-150 ease-in-out focus:border-blue-400"
-          />
-        </div>
-      </div>
-      <div>
-        <label
-          className="mb-4 text-sm text-gray-600 inline-block"
-          htmlFor="color"
-        >
-          Media Type
-        </label>
-        <div className="flex flex-wrap">
-          <div className="flex items-center mr-4">
-            <RadioField
-              name="color"
-              className="appearance-none w-6 h-6 border border-gray-300 rounded-full outline-none cursor-pointer checked:bg-blue-400"
-              id="red-color"
-              value="red"
-            />
-            <label className="ml-2 text-sm" htmlFor="red-color">
-              Red
-            </label>
-          </div>
-          <div className="flex items-center mr-4">
-            <RadioField
-              name="color"
-              className="appearance-none w-6 h-6 border border-gray-300 rounded-full outline-none cursor-pointer checked:bg-blue-400"
-              id="blue-color"
-              value="blue"
-            />
-            <label className="ml-2 text-sm" htmlFor="blue-color">
-              Blue
-            </label>
-          </div>
-          <div className="flex items-center mr-4">
-            <RadioField
-              name="color"
-              className="appearance-none w-6 h-6 border border-gray-300 rounded-full outline-none cursor-pointer checked:bg-blue-400"
-              id="pink-color"
-              value="pink"
-            />
-            <label className="ml-2 text-sm" htmlFor="pink-color">
-              Pink
-            </label>
-          </div>
-        </div>
-      </div>
-    </Form>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <FormControl>
+        <FormLabel htmlFor="taskName">Task name</FormLabel>
+        <Input id="taskName" type="text" {...register('taskName')} />
+        <FormHelperText>To help identify your task</FormHelperText>
+      </FormControl>
+      <FormControl as="fieldset" mt="4">
+        <FormLabel as="legend">Task Media</FormLabel>
+        <RadioGroup>
+          <HStack spacing="24px">
+            <Radio value="game" {...register('taskMedia')}>
+              Game
+            </Radio>
+            <Radio value="movie" {...register('taskMedia')} isDisabled>
+              Movie
+            </Radio>
+            <Radio value="tv_show" {...register('taskMedia')} isDisabled>
+              TV Show
+            </Radio>
+          </HStack>
+        </RadioGroup>
+        <FormHelperText>Type of media being parsed</FormHelperText>
+      </FormControl>
+      <Button type="submit" mt="6">
+        Submit
+      </Button>
+    </form>
   )
 }
 

@@ -21,9 +21,12 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@chakra-ui/react": "^1.8.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "autoprefixer": "^10.4.2",
+    "framer-motion": "^4",
     "postcss": "^8.4.5",
-    "postcss-loader": "^6.2.1",
-    "tailwindcss": "^3.0.18"
+    "postcss-loader": "^6.2.1"
   }
 }
