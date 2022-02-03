@@ -20,5 +20,8 @@
   },
   "prisma": {
     "seed": "yarn rw exec seed"
+  },
+  "scripts": {
+    "db setup": "docker-compose -f ./docker/docker-compose.yml up -d"
   }
 }

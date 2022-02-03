@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+    postgres:
+        image: postgres:latest
+        restart: always
+        healthcheck:
+          test: ["CMD", "pg_isready", "-U", "postgres"]
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '5432:5432'
+        volumes:
+          - "../.redwood/test_db/postgres-test-data:/var/lib/postgresql/data"
+          - "./postgres:/docker-entrypoint-initdb.d/"
