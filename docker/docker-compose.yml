@@ -15,5 +15,5 @@ services:
         ports:
           - '5432:5432'
         volumes:
-          - "../.redwood/test_db/postgres-test-data:/var/lib/postgresql/data"
+          - "$HOME/.config/redwood/.test_db/postgres-test-data:/var/lib/postgresql/data"
           - "./postgres:/docker-entrypoint-initdb.d/"
