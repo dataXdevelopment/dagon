@@ -19,12 +19,12 @@ model MetacriticTask {
 }
 
 model Task {
-  id        Int       @id @default(autoincrement())
+  id        Int        @id @default(autoincrement())
   name      String
-  status    String
+  status    TaskStatus
   type      TaskTypes
   data      Json
-  createdAt DateTime  @default(now())
+  createdAt DateTime   @default(now())
 }
 
 enum MetacriticTaskMedia {
@@ -34,6 +34,13 @@ enum MetacriticTaskMedia {
 }
 
 enum TaskTypes {
-  Metacritic
-  Twitter
+  METACRITIC
+  TWITTER
+}
+
+enum TaskStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
 }
