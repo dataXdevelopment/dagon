@@ -1,8 +1,8 @@
-import { Container, Box, Heading, Text } from '@chakra-ui/react'
+import { Container, Box, Heading } from '@chakra-ui/react'
 import MainLayout from 'src/layouts/MainLayout/MainLayout'
 import TasksCell from 'src/components/TasksCell'
 
-const TasksPage = () => {
+const DashboardPage = () => {
   return (
     <MainLayout>
       <Container maxW="container.xl" pl="16" pt="8">
@@ -19,4 +19,4 @@ const TasksPage = () => {
   )
 }
 
-export default TasksPage
+export default DashboardPage
