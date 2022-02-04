@@ -18,8 +18,22 @@ model MetacriticTask {
 
 }
 
+model Task {
+  id        Int       @id @default(autoincrement())
+  name      String
+  status    String
+  type      TaskTypes
+  data      Json
+  createdAt DateTime  @default(now())
+}
+
 enum MetacriticTaskMedia {
   MOVIE
   TV
   GAME
+}
+
+enum TaskTypes {
+  Metacritic
+  Twitter
 }
