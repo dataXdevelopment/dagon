@@ -49,7 +49,9 @@ const MetacriticTaskForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl isInvalid={errors.name ? true : false}>
-        <FormLabel htmlFor="taskName">Task name</FormLabel>
+        <FormLabel htmlFor="taskName" color="blue.800">
+          Task name
+        </FormLabel>
         <Input
           id="taskName"
           type="text"
@@ -63,14 +65,21 @@ const MetacriticTaskForm = () => {
       </FormControl>
 
       <FormControl as="fieldset" mt="4" isInvalid={errors.media ? true : false}>
-        <FormLabel as="legend">Task Media</FormLabel>
+        <FormLabel as="legend" color="blue.800">
+          Task Media
+        </FormLabel>
         <RadioGroup>
-          <HStack spacing="24px">
-            <Radio value="GAME" {...register('media', { required: true })}>
+          <HStack spacing="6">
+            <Radio
+              value="GAME"
+              colorScheme="blue"
+              {...register('media', { required: true })}
+            >
               Game
             </Radio>
             <Radio
               value="MOVIE"
+              colorScheme="blue"
               {...register('media', { required: true })}
               isDisabled
             >
@@ -78,6 +87,7 @@ const MetacriticTaskForm = () => {
             </Radio>
             <Radio
               value="TV"
+              colorScheme="blue"
               {...register('media', { required: true })}
               isDisabled
             >
@@ -91,8 +101,14 @@ const MetacriticTaskForm = () => {
           <FormHelperText>Type of media being parsed</FormHelperText>
         )}
       </FormControl>
-      <Button type="submit" mt="6" isLoading={loading} loadingText="Submitting">
-        Submit
+      <Button
+        type="submit"
+        mt="6"
+        isLoading={loading}
+        loadingText="Submitting"
+        colorScheme="blue"
+      >
+        Start Parsing
       </Button>
     </form>
   )
