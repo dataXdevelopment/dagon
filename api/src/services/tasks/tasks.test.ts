@@ -10,14 +10,12 @@ describe('tasks', () => {
   scenario('creates a task', async () => {
     const task = await createTask({
       input: {
-        name: 'test task',
         data: { test: 'test' },
         status: 'PENDING',
         type: 'METACRITIC',
       },
     })
 
-    expect(task.name).toEqual('test task')
     expect(task.data).toEqual({ test: 'test' })
     expect(task.status).toEqual('PENDING')
     expect(task.type).toEqual('METACRITIC')

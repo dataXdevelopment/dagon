@@ -1,12 +1,4 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  HStack,
-  Icon,
-  Spacer,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, Flex, Heading, HStack, Icon, VStack } from '@chakra-ui/react'
 import { Link, routes } from '@redwoodjs/router'
 import { MdWhatshot, MdDashboard, MdMenuBook } from 'react-icons/md'
 
@@ -42,7 +34,7 @@ const NavigationBar = () => {
       </Box>
       <VStack align="flex-start" spacing="4">
         <NavigationBarItem
-          route={routes.metacriticTask()}
+          route={routes.tasks()}
           icon={MdDashboard}
           text="Dashboard"
         />

@@ -2,11 +2,11 @@ import { Box } from '@chakra-ui/react'
 import MetacriticTaskForm from './MetacriticTaskForm'
 
 export const generated = () => {
-  mockGraphQLMutation('CreateMetacriticTaskMutation', (variables, { ctx }) => {
+  mockGraphQLMutation('CreateTaskMutation', (variables, { ctx }) => {
     const id = Math.floor(Math.random() * 1000)
     ctx.delay(1000)
     return {
-      createMetacriticTask: {
+      createTask: {
         id,
         name: variables.input.name,
         media: variables.input.media,

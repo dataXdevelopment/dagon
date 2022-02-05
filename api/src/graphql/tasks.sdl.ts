@@ -1,7 +1,6 @@
 export const schema = gql`
   type Task {
     id: Int!
-    name: String!
     status: TaskStatus!
     type: TaskTypes!
     data: JSON!
@@ -24,14 +23,12 @@ export const schema = gql`
   }
 
   input CreateTaskInput {
-    name: String!
     status: TaskStatus!
     type: TaskTypes!
     data: JSON!
   }
 
   input UpdateTaskInput {
-    name: String
     status: TaskStatus
     type: TaskTypes
     data: JSON

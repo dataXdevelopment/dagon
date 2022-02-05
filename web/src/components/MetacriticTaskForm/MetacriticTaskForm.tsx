@@ -11,17 +11,18 @@ import {
 } from '@chakra-ui/react'
 import { useForm } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
-import { CreateMetacriticTaskInput } from 'types/graphql'
-
+import { CreateTaskMutationVariables } from 'types/graphql'
 const CREATE = gql`
-  mutation CreateMetacriticTaskMutation($input: CreateMetacriticTaskInput!) {
-    createMetacriticTask(input: $input) {
+  mutation CreateTaskMutation($input: CreateTaskInput!) {
+    createTask(input: $input) {
       id
-      name
-      media
     }
   }
 `
+interface MetaCriticFormProps {
+  name: string
+  media: string
+}
 
 const MetacriticTaskForm = () => {
   const {
@@ -29,8 +30,11 @@ const MetacriticTaskForm = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<CreateMetacriticTaskInput>()
-  const [createMetacriticTask, { loading }] = useMutation(CREATE, {
+  } = useForm<MetaCriticFormProps>()
+  const [createTask, { loading }] = useMutation<
+    any,
+    CreateTaskMutationVariables
+  >(CREATE, {
     onCompleted: (data) => {
       console.log(data)
       reset()
@@ -39,34 +43,41 @@ const MetacriticTaskForm = () => {
       console.log(error)
     },
   })
-  const onSubmit = async (data: CreateMetacriticTaskInput) => {
-    createMetacriticTask({
+  const onSubmit = async (data: MetaCriticFormProps) => {
+    createTask({
       variables: {
-        input: data,
+        input: {
+          status: 'PENDING',
+          type: 'METACRITIC',
+          data: {
+            name: data.name,
+            media: data.media,
+          },
+        },
       },
     })
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormControl isInvalid={errors.name ? true : false}>
-        <FormLabel htmlFor="taskName" color="blue.800">
-          Task name
+        <FormLabel htmlFor="name" color="blue.800">
+          Media Name
         </FormLabel>
         <Input
-          id="taskName"
+          id="name"
           type="text"
           {...register('name', { required: true })}
         />
         {errors.name ? (
-          <FormErrorMessage>Task name is required</FormErrorMessage>
+          <FormErrorMessage>Media name is required</FormErrorMessage>
         ) : (
-          <FormHelperText>To help identify your task</FormHelperText>
+          <FormHelperText>What are we parsing for ?</FormHelperText>
         )}
       </FormControl>
 
       <FormControl as="fieldset" mt="4" isInvalid={errors.media ? true : false}>
         <FormLabel as="legend" color="blue.800">
-          Task Media
+          Media
         </FormLabel>
         <RadioGroup>
           <HStack spacing="6">
@@ -98,7 +109,7 @@ const MetacriticTaskForm = () => {
         {errors.media ? (
           <FormErrorMessage>Please select a medium</FormErrorMessage>
         ) : (
-          <FormHelperText>Type of media being parsed</FormHelperText>
+          <FormHelperText>What kind of media is it ?</FormHelperText>
         )}
       </FormControl>
       <Button
