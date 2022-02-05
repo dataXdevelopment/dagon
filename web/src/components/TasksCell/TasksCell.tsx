@@ -15,7 +15,7 @@ import {
 import Task from 'src/components/Task/Task'
 export const QUERY = gql`
   query TasksQuery {
-    tasks(limit: 1) {
+    tasks {
       id
       status
       type
