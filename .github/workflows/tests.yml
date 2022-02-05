@@ -16,10 +16,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Create env file
+      run: |
+        echo TEST_DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
     - name: Cloning repo
       uses: actions/setup-node@v2
       with:
         node-version: 16.x
-        cache: 'npm'
+        cache: 'yarn'
     - run: yarn install
     - run: yarn rw test
