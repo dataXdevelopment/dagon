@@ -20,7 +20,9 @@
       "@redwoodjs/testing": ["../node_modules/@redwoodjs/testing/web"]
     },
     "typeRoots": ["../node_modules/@types", "./node_modules/@types"],
-    "types": ["jest"],
+    "types": ["jest",
+      "@types/testing-library__jest-dom"
+    ],
     "jsx": "preserve",
   },
   "include": [

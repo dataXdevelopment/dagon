@@ -1,10 +1,20 @@
-const Task = ({ task }) => {
+import { Tr, Td } from '@chakra-ui/react'
+import { toSentenceCase } from 'js-convert-case'
+import { format as convertDate } from 'timeago.js'
+import { Task as TaskType } from 'types/graphql'
+
+const convertCase = (text: string) => toSentenceCase(text)
+const Task = ({
+  task,
+}: {
+  task: Pick<TaskType, 'type' | 'createdAt' | 'status'>
+}) => {
   return (
-    <div>
-      <h2>{'Task'}</h2>
-      {task.id}
-      <p>{'Find me in ./web/src/components/Task/Task.tsx'}</p>
-    </div>
+    <Tr>
+      <Td> {convertCase(task.type)}</Td>
+      <Td> {convertCase(task.status)}</Td>
+      <Td> {convertDate(new Date(task.createdAt))}</Td>
+    </Tr>
   )
 }
 

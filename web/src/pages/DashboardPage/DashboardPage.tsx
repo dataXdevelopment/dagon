@@ -10,7 +10,15 @@ const DashboardPage = () => {
           <Heading color="blue.900" fontWeight="regular">
             Recent Tasks
           </Heading>
-          <Box mt="8" maxW="2xl">
+          <Box
+            mt="8"
+            maxW="2xl"
+            borderColor="gray.200"
+            borderStyle="solid"
+            borderWidth="thin"
+            borderRadius="md"
+            padding="4"
+          >
             <TasksCell />
           </Box>
         </Box>

@@ -17,10 +17,12 @@
     "@redwoodjs/forms": "^0.44.0",
     "@redwoodjs/router": "^0.44.0",
     "@redwoodjs/web": "^0.44.0",
+    "js-convert-case": "^4.2.0",
     "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@chakra-ui/react": "^1.8.1",
