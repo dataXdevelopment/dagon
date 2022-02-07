@@ -58,6 +58,7 @@ export const Success = ({ tasks }: CellSuccessProps<TasksQuery>) => {
           <Th>Engine</Th>
           <Th>Status</Th>
           <Th>Submitted</Th>
+          <Th></Th>
         </Tr>
       </Thead>
       <Tbody>

@@ -1,4 +1,4 @@
-import { render } from '@redwoodjs/testing/web'
+import { render, screen } from '@redwoodjs/testing/web'
 import { Loading, Empty, Failure, Success } from './TasksCell'
 import { standard } from './TasksCell.mock'
 
@@ -28,8 +28,15 @@ describe('TasksCell', () => {
   // 2. Add test: expect(screen.getByText('Hello, world')).toBeInTheDocument()
 
   it('renders Success successfully', async () => {
-    expect(() => {
-      render(<Success tasks={standard().tasks} />)
-    }).not.toThrow()
+    const tasks = standard().tasks
+    render(<Success tasks={tasks} />)
+
+    tasks.map((task) => {
+      expect(
+        screen.getAllByText(task.type, {
+          exact: false,
+        })
+      ).toBeGreaterThan(0)
+    })
   })
 })

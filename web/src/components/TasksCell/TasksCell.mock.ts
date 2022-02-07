@@ -26,7 +26,7 @@ const tasks = [
   {
     id: 4,
     name: 'String',
-    status: 'FAILED' as TaskStatus,
+    status: 'RUNNING' as TaskStatus,
     type: 'METACRITIC' as TaskTypes,
     createdAt: new Date().toString(),
   },

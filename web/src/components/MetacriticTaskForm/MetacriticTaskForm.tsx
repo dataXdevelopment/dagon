@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { useForm } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
-import { CreateTaskMutationVariables } from 'types/graphql'
+import { CreateTaskMutation, CreateTaskMutationVariables } from 'types/graphql'
 const CREATE = gql`
   mutation CreateTaskMutation($input: CreateTaskInput!) {
     createTask(input: $input) {
@@ -32,7 +32,7 @@ const MetacriticTaskForm = () => {
     formState: { errors },
   } = useForm<MetaCriticFormProps>()
   const [createTask, { loading }] = useMutation<
-    any,
+    CreateTaskMutation,
     CreateTaskMutationVariables
   >(CREATE, {
     onCompleted: (data) => {
