@@ -1,6 +1,6 @@
 import { Table, Tbody } from '@chakra-ui/react'
 import { render, screen } from '@redwoodjs/testing/web'
-import { TaskStatus, TaskTypes } from 'types/graphql'
+import { TaskStatus, EngineTypes } from 'types/graphql'
 
 import Task from './Task'
 
@@ -15,7 +15,7 @@ describe('Task', () => {
       id: 1,
       name: 'String',
       status: 'PENDING' as TaskStatus,
-      type: 'TWITTER' as TaskTypes,
+      engine: 'TWITTER' as EngineTypes,
       createdAt: new Date(2022, 1, 5, 19, 30).toString(),
     }
     render(
@@ -32,7 +32,7 @@ describe('Task', () => {
       id: 1,
       name: 'String',
       status: 'COMPLETED' as TaskStatus,
-      type: 'TWITTER' as TaskTypes,
+      engine: 'TWITTER' as EngineTypes,
       createdAt: new Date(2022, 1, 5, 19, 30).toString(),
     }
     render(

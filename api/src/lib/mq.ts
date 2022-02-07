@@ -9,6 +9,11 @@ class MessageQueue {
     this.initConnection()
   }
 
+  async close() {
+    await MessageQueue.channel.close()
+    await MessageQueue.connection.close()
+  }
+
   private async initConnection() {
     if (this.connected()) {
       return true

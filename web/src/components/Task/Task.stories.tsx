@@ -1,5 +1,5 @@
 import { Table, Tbody } from '@chakra-ui/react'
-import { TaskStatus, TaskTypes } from 'types/graphql'
+import { TaskStatus, EngineTypes } from 'types/graphql'
 import Task from './Task'
 
 export const pending = () => {
@@ -7,7 +7,7 @@ export const pending = () => {
     id: 1,
     name: 'String',
     status: 'PENDING' as TaskStatus,
-    type: 'TWITTER' as TaskTypes,
+    engine: 'TWITTER' as EngineTypes,
     createdAt: new Date(2022, 1, 5, 19, 30).toString(),
   }
   return (
@@ -23,7 +23,7 @@ export const completed = () => {
     id: 1,
     name: 'String',
     status: 'COMPLETED' as TaskStatus,
-    type: 'TWITTER' as TaskTypes,
+    engine: 'TWITTER' as EngineTypes,
     createdAt: new Date(2022, 1, 5, 19, 30).toString(),
   }
   return (

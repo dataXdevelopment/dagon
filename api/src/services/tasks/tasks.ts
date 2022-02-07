@@ -6,10 +6,14 @@ export const tasks = () => {
   return db.task.findMany()
 }
 
-export const createTask = ({ input }: { input: Prisma.TaskCreateInput }) => {
+export const createTask = async ({
+  input,
+}: {
+  input: Prisma.TaskCreateInput
+}) => {
   const task = db.task.create({
     data: input,
   })
-  mq.sendToChannel(input.data)
+  await mq.sendToChannel(input.data)
   return task
 }

@@ -2,7 +2,7 @@ export const schema = gql`
   type Task {
     id: Int!
     status: TaskStatus!
-    type: TaskTypes!
+    engine: EngineTypes!
     data: JSON!
     createdAt: DateTime!
   }
@@ -13,7 +13,7 @@ export const schema = gql`
     COMPLETED
     FAILED
   }
-  enum TaskTypes {
+  enum EngineTypes {
     METACRITIC
     TWITTER
   }
@@ -24,13 +24,13 @@ export const schema = gql`
 
   input CreateTaskInput {
     status: TaskStatus!
-    type: TaskTypes!
+    engine: EngineTypes!
     data: JSON!
   }
 
   input UpdateTaskInput {
     status: TaskStatus
-    type: TaskTypes
+    engine: EngineTypes
     data: JSON
   }
   type Mutation {

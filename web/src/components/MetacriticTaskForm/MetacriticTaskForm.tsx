@@ -48,7 +48,7 @@ const MetacriticTaskForm = () => {
       variables: {
         input: {
           status: 'PENDING',
-          type: 'METACRITIC',
+          engine: 'METACRITIC',
           data: {
             name: data.name,
             media: data.media,

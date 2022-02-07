@@ -18,7 +18,7 @@ export const QUERY = gql`
     tasks {
       id
       status
-      type
+      engine
       createdAt
     }
   }

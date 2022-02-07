@@ -33,7 +33,7 @@ describe('TasksCell', () => {
 
     tasks.map((task) => {
       expect(
-        screen.getAllByText(task.type, {
+        screen.getAllByText(task.engine, {
           exact: false,
         })
       ).toHaveLength(2)

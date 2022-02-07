@@ -13,14 +13,14 @@ generator client {
 // TODO: Please remove the following example:
 
 model Task {
-  id        Int        @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   status    TaskStatus
-  type      TaskTypes
+  engine    EngineTypes
   data      Json
-  createdAt DateTime   @default(now())
+  createdAt DateTime    @default(now())
 }
 
-enum TaskTypes {
+enum EngineTypes {
   METACRITIC
   TWITTER
 }

@@ -1,7 +1,11 @@
+import { mq } from 'src/lib/mq'
 import { createTask, tasks } from './tasks'
 import type { StandardScenario } from './tasks.scenarios'
 
 describe('tasks', () => {
+  afterAll(async () => {
+    await mq.close()
+  })
   scenario('returns all tasks', async (scenario: StandardScenario) => {
     const result = await tasks()
 
@@ -12,13 +16,13 @@ describe('tasks', () => {
       input: {
         data: { test: 'test' },
         status: 'PENDING',
-        type: 'METACRITIC',
+        engine: 'METACRITIC',
       },
     })
 
     expect(task.data).toEqual({ test: 'test' })
     expect(task.status).toEqual('PENDING')
-    expect(task.type).toEqual('METACRITIC')
+    expect(task.engine).toEqual('METACRITIC')
     expect(task.createdAt).toBeDefined()
     expect(task.id).toBeDefined()
   })
