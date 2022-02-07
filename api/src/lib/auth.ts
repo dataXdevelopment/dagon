@@ -27,6 +27,8 @@ export const requireAuth = ({ roles }) => {
 }
 
 export const isAuthenticatedWorker = ({ apiKey }) => {
+  if (process.env.WORKER_API_KEY === undefined)
+    throw new Error('WORKER_API_KEY is undefined')
   if (apiKey !== process.env.WORKER_API_KEY)
     throw new AuthenticationError("You don't have permission to do that.")
 }

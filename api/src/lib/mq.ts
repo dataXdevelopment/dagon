@@ -19,6 +19,10 @@ class MessageQueue {
     if (this.connected()) {
       return
     }
+
+    if (process.env.AMPQ_URL === undefined)
+      throw new Error('AMPQ_URL is undefined')
+
     MessageQueue.connection = await connect(process.env.AMPQ_URL)
     MessageQueue.channel = await MessageQueue.connection.createChannel()
     return
