@@ -36,7 +36,7 @@ describe('TasksCell', () => {
         screen.getAllByText(task.type, {
           exact: false,
         })
-      ).toBeGreaterThan(0)
+      ).toHaveLength(2)
     })
   })
 })
