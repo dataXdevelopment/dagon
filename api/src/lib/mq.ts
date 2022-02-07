@@ -3,7 +3,8 @@ import { Channel, connect, Connection } from 'amqplib'
 class MessageQueue {
   private static connection: undefined | Connection = undefined
   private static channel: undefined | Channel
-  private connected = () => MessageQueue.connection !== undefined
+  private connected = () =>
+    MessageQueue.connection !== undefined && MessageQueue.channel !== undefined
 
   constructor() {
     this.initConnection()
@@ -16,14 +17,15 @@ class MessageQueue {
 
   private async initConnection() {
     if (this.connected()) {
-      return true
+      return
     }
     MessageQueue.connection = await connect(process.env.AMPQ_URL)
     MessageQueue.channel = await MessageQueue.connection.createChannel()
-    return true
+    return
   }
 
   async sendToChannel(queueName: string, data) {
+    if (!this.connected()) await this.initConnection()
     await MessageQueue.channel.assertQueue(queueName, { durable: true })
     MessageQueue.channel.sendToQueue(
       queueName,
