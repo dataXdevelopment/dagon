@@ -1,3 +1,5 @@
+import { AuthenticationError } from '@redwoodjs/graphql-server'
+
 /**
  * Once you are ready to add authentication to your application
  * you'll build out requireAuth() with real functionality. For
@@ -22,4 +24,9 @@ export const hasRole = ({ roles }) => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const requireAuth = ({ roles }) => {
   return isAuthenticated()
+}
+
+export const isAuthenticatedWorker = ({ apiKey }) => {
+  if (apiKey !== process.env.WORKER_API_KEY)
+    throw new AuthenticationError("You don't have permission to do that.")
 }

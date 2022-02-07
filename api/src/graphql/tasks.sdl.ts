@@ -34,6 +34,6 @@ export const schema = gql`
 
   type Mutation {
     createTask(input: CreateTaskInput!): Task! @requireAuth
-    updateTask(id: Int!, input: UpdateTaskInput!): Task! @skipAuth
+    updateTask(id: Int!, input: UpdateTaskInput!): Task! @workerAuth
   }
 `
