@@ -25,4 +25,8 @@ jobs:
         node-version: 16.x
         cache: 'yarn'
     - run: yarn install
+    - name: Starts rabbitmq
+    - uses: nijel/rabbitmq-action@v1.0.0
+      with:
+        rabbitmq version: '3.9.13'
     - run: yarn rw test
