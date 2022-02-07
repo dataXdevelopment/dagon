@@ -1,5 +1,5 @@
 import { mq } from 'src/lib/mq'
-import { createTask, tasks } from './tasks'
+import { createTask, tasks, updateTask } from './tasks'
 import type { StandardScenario } from './tasks.scenarios'
 
 describe('tasks', () => {
@@ -25,5 +25,14 @@ describe('tasks', () => {
     expect(task.engine).toEqual('METACRITIC')
     expect(task.createdAt).toBeDefined()
     expect(task.id).toBeDefined()
+  })
+  scenario('updates a task', async (scenario: StandardScenario) => {
+    const task = await updateTask({
+      id: scenario.task.one.id,
+      input: {
+        status: 'COMPLETED',
+      },
+    })
+    expect(task.status).toEqual('COMPLETED')
   })
 })

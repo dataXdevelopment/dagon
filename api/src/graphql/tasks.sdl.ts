@@ -30,10 +30,10 @@ export const schema = gql`
 
   input UpdateTaskInput {
     status: TaskStatus
-    engine: EngineTypes
-    data: JSON
   }
+
   type Mutation {
     createTask(input: CreateTaskInput!): Task! @requireAuth
+    updateTask(id: Int!, input: UpdateTaskInput!): Task! @skipAuth
   }
 `
