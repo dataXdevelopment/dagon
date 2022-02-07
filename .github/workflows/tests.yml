@@ -27,6 +27,6 @@ jobs:
     - run: yarn install
     - uses: nijel/rabbitmq-action@v1.0.0
       with:
-        rabbitmq version: '3.9.13'
-    - name: Starts rabbitmq
+        rabbitmq version: '5'
+      name: Starts rabbit mq
     - run: yarn rw test
