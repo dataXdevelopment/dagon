@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@redwoodjs/api": "^0.44.0",
-    "@redwoodjs/graphql-server": "^0.44.0"
+    "@redwoodjs/graphql-server": "^0.44.0",
+    "@types/amqplib": "^0.8.2",
+    "amqplib": "^0.8.0"
   }
 }
