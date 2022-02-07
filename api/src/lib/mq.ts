@@ -23,8 +23,7 @@ class MessageQueue {
     return true
   }
 
-  async sendToChannel(data) {
-    const queueName = 'metacritic'
+  async sendToChannel(queueName: string, data) {
     await MessageQueue.channel.assertQueue(queueName, { durable: true })
     MessageQueue.channel.sendToQueue(
       queueName,

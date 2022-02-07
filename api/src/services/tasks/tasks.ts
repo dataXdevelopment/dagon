@@ -14,6 +14,10 @@ export const createTask = async ({
   const task = db.task.create({
     data: input,
   })
-  await mq.sendToChannel(input.data)
+  const workerData = {
+    id: (await task).id,
+    ...(input.data as Record<string, string>),
+  }
+  await mq.sendToChannel(input.engine, workerData)
   return task
 }
