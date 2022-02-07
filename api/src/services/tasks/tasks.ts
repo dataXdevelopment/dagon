@@ -12,11 +12,12 @@ export const createTask = async ({
 }: {
   input: Prisma.TaskCreateInput
 }) => {
-  const task = db.task.create({
+  const task = await db.task.create({
     data: input,
   })
+
   const workerData = {
-    id: (await task).id,
+    id: task.id,
     ...(input.data as Record<string, string>),
   }
   await mq.sendToChannel(input.engine, workerData)

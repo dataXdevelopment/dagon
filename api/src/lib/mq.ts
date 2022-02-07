@@ -29,16 +29,17 @@ class MessageQueue {
   }
 
   async sendToChannel(queueName: string, data) {
-    if (!this.connected()) await this.initConnection()
+    await this.initConnection()
+
     await MessageQueue.channel.assertQueue(queueName, { durable: true })
     MessageQueue.channel.sendToQueue(
       queueName,
-      Buffer.from(`Hello World! ${JSON.stringify(data)}`),
+      Buffer.from(`${JSON.stringify(data)}`),
       {
         deliveryMode: true,
       }
     )
-    console.log(`Sent 'Hello World!' to ${queueName} ${JSON.stringify(data)}`)
+    console.log(`Sent to ${queueName} ${JSON.stringify(data)}`)
   }
 }
 
