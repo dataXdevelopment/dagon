@@ -11,9 +11,10 @@ export const standard = defineScenario<Prisma.TaskCreateArgs>({
     },
     two: {
       data: {
-        status: 'PENDING',
+        status: 'COMPLETED',
         engine: 'METACRITIC',
         data: { foo: 'bar' },
+        result: 'http://test.com',
       },
     },
   },

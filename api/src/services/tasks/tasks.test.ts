@@ -23,6 +23,7 @@ describe('tasks', () => {
     expect(task.data).toEqual({ test: 'test' })
     expect(task.status).toEqual('PENDING')
     expect(task.engine).toEqual('METACRITIC')
+    expect(task.result).toBeNull()
     expect(task.createdAt).toBeDefined()
     expect(task.id).toBeDefined()
   })
@@ -31,8 +32,10 @@ describe('tasks', () => {
       id: scenario.task.one.id,
       input: {
         status: 'COMPLETED',
+        result: 'test.com',
       },
     })
     expect(task.status).toEqual('COMPLETED')
+    expect(task.result).toEqual('test.com')
   })
 })

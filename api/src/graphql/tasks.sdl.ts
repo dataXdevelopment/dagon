@@ -4,6 +4,7 @@ export const schema = gql`
     status: TaskStatus!
     engine: EngineTypes!
     data: JSON!
+    result: String
     createdAt: DateTime!
   }
 
@@ -29,7 +30,8 @@ export const schema = gql`
   }
 
   input UpdateTaskInput {
-    status: TaskStatus
+    status: TaskStatus!
+    result: String!
   }
 
   type Mutation {
