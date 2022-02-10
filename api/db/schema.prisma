@@ -17,6 +17,7 @@ model Task {
   status    TaskStatus
   engine    EngineTypes
   data      Json
+  result    String?
   createdAt DateTime    @default(now())
 }
 
