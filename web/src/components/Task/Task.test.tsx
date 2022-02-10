@@ -34,6 +34,7 @@ describe('Task', () => {
       status: 'COMPLETED' as TaskStatus,
       engine: 'TWITTER' as EngineTypes,
       createdAt: new Date(2022, 1, 5, 19, 30).toString(),
+      result: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     }
     render(
       <TableWrapper>
@@ -41,5 +42,6 @@ describe('Task', () => {
       </TableWrapper>
     )
     expect(screen.getByLabelText('download-result')).toBeInTheDocument()
+    expect(screen.getByRole('link')).toHaveAttribute('href', TASK.result)
   })
 })

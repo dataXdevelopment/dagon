@@ -6,7 +6,6 @@ const NavigationBarItem = ({ route, icon, text }) => (
   <Box py="4" _hover={{ bg: 'blue.300' }} minW="full" px="8">
     <Link to={route}>
       <HStack>
-        <Icon as={icon} boxSize="6" color="blue.900" />
         <Heading fontSize="24px" fontWeight="normal" color="blue.900">
           {text}
         </Heading>

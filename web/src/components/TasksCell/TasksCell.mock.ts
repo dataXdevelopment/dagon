@@ -15,6 +15,7 @@ const tasks = [
     status: 'COMPLETED' as TaskStatus,
     engine: 'TWITTER' as EngineTypes,
     createdAt: new Date(2022, 1, 5, 9, 30).toString(),
+    result: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   },
   {
     id: 3,

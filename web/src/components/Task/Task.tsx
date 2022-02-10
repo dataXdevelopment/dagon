@@ -1,5 +1,5 @@
 import { DownloadIcon } from '@chakra-ui/icons'
-import { Tr, Td, Badge, IconButton } from '@chakra-ui/react'
+import { Tr, Td, Badge, IconButton, Link } from '@chakra-ui/react'
 import { toSentenceCase } from 'js-convert-case'
 import { format as convertDate } from 'timeago.js'
 import { Task as TaskType, TaskStatus } from 'types/graphql'
@@ -19,7 +19,7 @@ const TaskStatusBadge = ({ taskStatus }: { taskStatus: TaskStatus }) => {
 const Task = ({
   task,
 }: {
-  task: Pick<TaskType, 'engine' | 'createdAt' | 'status'>
+  task: Pick<TaskType, 'engine' | 'createdAt' | 'status' | 'result'>
 }) => {
   return (
     <Tr>
@@ -30,13 +30,15 @@ const Task = ({
       <Td> {convertDate(new Date(task.createdAt))}</Td>
       <Td isNumeric>
         {task.status === 'COMPLETED' && (
-          <IconButton
-            aria-label="download-result"
-            size="sm"
-            colorScheme="gray"
-            variant="ghost"
-            icon={<DownloadIcon />}
-          />
+          <Link href={task.result} isExternal>
+            <IconButton
+              aria-label="download-result"
+              size="sm"
+              colorScheme="gray"
+              variant="ghost"
+              icon={<DownloadIcon />}
+            />
+          </Link>
         )}
       </Td>
     </Tr>

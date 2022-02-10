@@ -25,6 +25,7 @@ export const completed = () => {
     status: 'COMPLETED' as TaskStatus,
     engine: 'TWITTER' as EngineTypes,
     createdAt: new Date(2022, 1, 5, 19, 30).toString(),
+    result: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   }
   return (
     <Table variant="simple">

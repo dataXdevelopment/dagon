@@ -19,6 +19,7 @@ export const QUERY = gql`
       id
       status
       engine
+      result
       createdAt
     }
   }
