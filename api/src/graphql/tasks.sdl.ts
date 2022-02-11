@@ -31,7 +31,7 @@ export const schema = gql`
 
   input UpdateTaskInput {
     status: TaskStatus!
-    result: String!
+    result: String
   }
 
   type Mutation {
